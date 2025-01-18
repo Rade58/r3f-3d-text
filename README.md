@@ -67,3 +67,11 @@ if we have duplicate meshes, like we do in this workshop (nested with array `map
 **we assign state to the geometry attribute of the mesh**
 
 Same thing you can do with the material too
+
+# Optimization (simpler solution)
+
+creating geometry and material instances the old (pure threejs) way, outside of r3f
+
+**WE WILL CREATE MATERIAL AND GEOMETRY OUTSIDE OF THE COMPONENT**
+
+And then we can use it as attributes on mesh tag
