@@ -16,14 +16,14 @@ export function Experience() {
   // const someControls = useControls("_", { test: 1 });
 
   // This is texture from CDN
-  /* const cdnMatcapTexture = useMatcapTexture(
+  const cdnMatcapTexture = useMatcapTexture(
     // "605352_E9CCC5_C7A8A3_A89291",
     // "613F04_D68C04_A45F04_1F0F04",
     "5F1827_9B4A60_1F0404_340406",
     // "617586_23304C_1B1E30_4988CF",
     // "622F19_885934_9A7748_94603A",
     256
-  ); */
+  );
 
   // This is local texture
   const matcapTexture = useTexture(
@@ -73,6 +73,9 @@ export function Experience() {
       <Suspense>
         <DonutsWithGlaze />
       </Suspense>
+
+      {/* ----------------------------- */}
+      {/* ----------------------------- */}
     </>
   );
 }
