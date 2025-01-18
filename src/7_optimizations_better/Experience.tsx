@@ -8,10 +8,20 @@ import {
 
 import { Perf } from "r3f-perf";
 
-import { useControls } from "leva";
-import { Suspense, useState } from "react";
+// import { useControls } from "leva";
+import { Suspense, useEffect } from "react";
 import { DonutsWithGlaze } from "./DonutsWithGlaze";
-import { MeshMatcapMaterial, type TorusGeometry } from "three";
+import {
+  MeshMatcapMaterial,
+  SRGBColorSpace,
+  TorusGeometry,
+  TorusKnotGeometry,
+} from "three";
+
+// creating geometry and material outside the component
+//
+const matcapMaterial = new MeshMatcapMaterial({});
+const torusGeometry = new TorusGeometry(1, 0.6, 16, 32);
 
 export function Experience() {
   // const someControls = useControls("_", { test: 1 });
@@ -41,8 +51,27 @@ export function Experience() {
   // const tempArray = [...Array(100)];
   // console.log({ tempArray });
 
-  const [torusGeometry, setTorusGeometry] = useState<TorusGeometry>();
-  const [matcapMaterial, setMatcapMaterial] = useState<MeshMatcapMaterial>();
+  // no need for these
+  // const [torusGeometry, setTorusGeometry] = useState<TorusGeometry>();
+  // const [matcapMaterial, setMatcapMaterial] = useState<MeshMatcapMaterial>();
+  // matcapMaterial.matcap = cdnMatcapTexture[0];
+
+  useEffect(
+    () => {
+      console.log({ cdnMatcapTexture });
+      if (cdnMatcapTexture[0]) {
+        cdnMatcapTexture[0].colorSpace = SRGBColorSpace;
+        cdnMatcapTexture[0].needsUpdate = true;
+
+        matcapMaterial.matcap = cdnMatcapTexture[0];
+
+        matcapMaterial.needsUpdate = true;
+      }
+    },
+    [
+      /* cdnMatcapTexture */
+    ]
+  );
 
   return (
     <>
@@ -52,8 +81,8 @@ export function Experience() {
 
       {/* ----------------------------- */}
       {/* ----------------------------- */}
-      {/* outside the mesh */}
-      <torusGeometry
+      {/* No need for these anyomore*/}
+      {/* <torusGeometry
         args={[1, 0.6, 16, 32]}
         // @ts-expect-error ref is yelling because of setter
         ref={setTorusGeometry}
@@ -63,7 +92,7 @@ export function Experience() {
         matcap={cdnMatcapTexture[0]}
         // @ts-expect-error ref iyelling
         ref={setMatcapMaterial}
-      />
+      /> */}
 
       {/* ----------------------------- */}
       {/* ----------------------------- */}
@@ -113,11 +142,7 @@ export function Experience() {
           ]}
           scale={0.2 + Math.random() * 0.2}
           rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
-        >
-          {/* moved outside */}
-          {/* <torusGeometry args={[1, 0.6, 16, 32]} /> */}
-          {/* <meshMatcapMaterial matcap={cdnMatcapTexture[0]} /> */}
-        </mesh>
+        />
       ))}
     </>
   );

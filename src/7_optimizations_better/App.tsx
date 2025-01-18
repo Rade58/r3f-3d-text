@@ -39,7 +39,7 @@ export function App() {
         shadows
       >
         {/* <color args={["blanchedalmond"]} attach={"background"} /> */}
-        <color args={["#d39f8b"]} attach={"background"} />
+        <color args={["#ebcfda"]} attach={"background"} />
         <Experience />
       </Canvas>
     </>

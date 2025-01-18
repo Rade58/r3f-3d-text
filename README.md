@@ -75,3 +75,7 @@ creating geometry and material instances the old (pure threejs) way, outside of 
 **WE WILL CREATE MATERIAL AND GEOMETRY OUTSIDE OF THE COMPONENT**
 
 And then we can use it as attributes on mesh tag
+
+**But when you assign materia to the mesh, it will work but it will look wierd, maybe because encoding, or color space**
+
+So I changed color space on the texture to **`SRGBColorSpace`** and it worked
