@@ -13,12 +13,24 @@ import { useControls } from "leva";
 export function Experience() {
   // const someControls = useControls("_", { test: 1 });
 
-  const cdnMatcapTexture = useMatcapTexture("605352_E9CCC5_C7A8A3_A89291");
-
-  /* const matcapTexture = useTexture(
-    // "/textures/matcaps/613F04_D68C04_A45F04_1F0F04-512px.png"
-    "/textures/matcaps/605352_E9CCC5_C7A8A3_A89291-512px.png"
+  // This is texture from CDN
+  /* const cdnMatcapTexture = useMatcapTexture(
+    // "605352_E9CCC5_C7A8A3_A89291",
+    // "613F04_D68C04_A45F04_1F0F04",
+    "5F1827_9B4A60_1F0404_340406",
+    // "617586_23304C_1B1E30_4988CF",
+    // "622F19_885934_9A7748_94603A",
+    256
   ); */
+
+  // This is local texture
+  const matcapTexture = useTexture(
+    // "/textures/matcaps/605352_E9CCC5_C7A8A3_A89291-256px.png"
+    // "/textures/matcaps/613F04_D68C04_A45F04_1F0F04-256px.png"
+    // "/textures/matcaps/5F1827_9B4A60_1F0404_340406-256px.png"
+    "/textures/matcaps/617586_23304C_1B1E30_4988CF-256px.png"
+    // "/textures/matcaps/622F19_885934_9A7748_94603A-256px.png"
+  );
 
   // console.log({ matcapTexture });
 
@@ -50,8 +62,8 @@ export function Experience() {
           ЗДРАВО R3F
           {/* <meshNormalMaterial /> */}
           <meshMatcapMaterial
-            matcap={cdnMatcapTexture[0]}
-            // matcap={matcapTexture}
+            // matcap={cdnMatcapTexture[0]}
+            matcap={matcapTexture}
           />
         </Text3D>
       </Center>

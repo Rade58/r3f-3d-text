@@ -38,7 +38,8 @@ export function App() {
         // orthographic
         shadows
       >
-        <color args={["blanchedalmond"]} attach={"background"} />
+        {/* <color args={["blanchedalmond"]} attach={"background"} /> */}
+        <color args={["#d39f8b"]} attach={"background"} />
         <Experience />
       </Canvas>
     </>

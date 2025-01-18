@@ -49,3 +49,7 @@ we used it with help of `useMatcapTexture` helper, where we provide id of the te
 but these matcaps we load from cdn so don't use it for production
 
 For production, download actual texture from mentioned site, and use `useTexture` hook to load it from public folder
+
+In terms of size, you should use `256` which is more than enough
+
+You should try to use smallest possible size that still looks good
