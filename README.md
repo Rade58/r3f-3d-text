@@ -53,3 +53,17 @@ For production, download actual texture from mentioned site, and use `useTexture
 In terms of size, you should use `256` which is more than enough
 
 You should try to use smallest possible size that still looks good
+
+# Optimization (hacky way)
+
+if we have duplicate meshes, like we do in this workshop (nested with array `map` function), make sure to reuse geometry and material
+
+- We did a silly trick where we nest one `<torusGeometry />` outside of the mesh
+- we store that geometry with `useState`
+- we put it back inside mesh from the state
+
+**Setter function from the state we assign to the ref of torusGeometry**
+
+**we assign state to the geometry attribute of the mesh**
+
+Same thing you can do with the material too

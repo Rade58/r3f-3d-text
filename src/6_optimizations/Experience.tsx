@@ -9,8 +9,9 @@ import {
 import { Perf } from "r3f-perf";
 
 import { useControls } from "leva";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { DonutsWithGlaze } from "./DonutsWithGlaze";
+import { type TorusGeometry } from "three";
 
 export function Experience() {
   // const someControls = useControls("_", { test: 1 });
@@ -40,11 +41,25 @@ export function Experience() {
   // const tempArray = [...Array(100)];
   // console.log({ tempArray });
 
+  const [torusGeometry, setTorusGeometry] = useState<TorusGeometry>();
+
   return (
     <>
       <Perf position="top-left" />
 
       <OrbitControls makeDefault />
+
+      {/* ----------------------------- */}
+      {/* ----------------------------- */}
+      {/* outside the mesh */}
+      <torusGeometry
+        args={[1, 0.6, 16, 32]}
+        // @ts-expect-error ref is yelling because of setter
+        ref={setTorusGeometry}
+      />
+
+      {/* ----------------------------- */}
+      {/* ----------------------------- */}
 
       {/* ----------------------------- */}
       {/* ----------------------------- */}
@@ -78,10 +93,9 @@ export function Experience() {
         <DonutsWithGlaze />
       </Suspense>
 
-      {/* ----------------------------- */}
-      {/* ----------------------------- */}
       {[...Array(100)].map((_, i) => (
         <mesh
+          geometry={torusGeometry}
           key={i}
           position={[
             (Math.random() - 0.5) * 10,
@@ -91,7 +105,7 @@ export function Experience() {
           scale={0.2 + Math.random() * 0.2}
           rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
         >
-          <torusGeometry args={[1, 0.6, 16, 32]} />
+          {/* <torusGeometry args={[1, 0.6, 16, 32]} /> */}
           <meshMatcapMaterial matcap={cdnMatcapTexture[0]} />
         </mesh>
       ))}
