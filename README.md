@@ -79,3 +79,39 @@ And then we can use it as attributes on mesh tag
 **But when you assign materia to the mesh, it will work but it will look wierd, maybe because encoding, or color space**
 
 So I changed color space on the texture to **`SRGBColorSpace`** and it worked
+
+# Accessing meshes you nested with arrays `map`
+
+you can encapsulate meshes in a `<group>`, make a ref of the group, and then access `children` of the group
+
+and you can animate desired child
+
+We used group here but group isn't intended to be used for this purpose
+
+Don't get me wrong, using group and accessing its children doesn't have some bad impact on performance but there is better way
+
+We don't want to add group for purpose just to access children
+
+# Accessing meshes you nested with arrays `map`, other solution, better but more complex
+
+we will use array but we will going to declare it like this:
+
+```ts
+const donuts = useRef([]);
+
+//
+// ...
+// and we are going to do this
+
+ {[...Array(100)].map((_, i) => (
+    <mesh
+      ref={(m) => {
+        donuts.current.push(m);
+      }}
+
+// ...
+```
+
+So we are adding meshes to array, and later we can loop throug that array to animate individual meshes
+
+to see what we did check `src/9_accessing_meshes_better_solution/Experience.tsx`
