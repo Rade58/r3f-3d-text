@@ -119,3 +119,5 @@ const donuts = useRef([]);
 So we are adding meshes to array, and later we can loop throug that array to animate individual meshes
 
 to see what we did check `src/9_accessing_meshes_better_solution/Experience.tsx`
+
+**BUT AUTHOR OF THE WORKSHOP USES group SOLUTION MORE OFFTEN**, so you choose what you're going to use
