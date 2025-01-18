@@ -106,7 +106,11 @@ const donuts = useRef([]);
  {[...Array(100)].map((_, i) => (
     <mesh
       ref={(m) => {
-        donuts.current.push(m);
+        // but not like this
+        // donuts.current.push(m);
+        // we are doing it with index
+        donuts.current[i] = m;
+
       }}
 
 // ...

@@ -129,8 +129,9 @@ export function Experience() {
       {[...Array(100)].map((_, i) => (
         <mesh
           ref={(m) => {
+            // donuts.current.push(m);
             // @ts-expect-error m is complicated type, but it is mesh
-            donuts.current.push(m);
+            donuts.current[i] = m;
           }}
           geometry={torusGeometry}
           material={matcapMaterial}
